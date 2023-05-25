@@ -1,0 +1,22 @@
+Elastic Block Storage
+- 저장 공간이 생성 되어지면, EC2 인스턴스에 부착된다.
+- 디스크 볼륨 위에 File System이 생성된다.
+- EBS는 특정 Availability Zone에 생성된다. 
+
+Availability Zone(AZ)
+하나의 region에 여러개의 AZ가 존재할 수 있다. 
+중심부로부터 그의 복사본들이 AZ로 생성되며 유사시 한 쪽 서버가 셧다운 됐을 때,
+AZ라는 백업을 통해 서비스 제공을 가능케 해주는 일종의 Disaster Recovery
+
+EBS 볼륨 타입
+- SSD 군
+  - General Purpose SSD(GP2) : 최대 10K IOPS를 지원하며 1GB당 3IOPS 속도가 나옴
+  - Provisioned IOPS SSD(IO1) : 극도의 I/O 률을 요구하는 환경에서 주로 사용됨.
+    10K 이상의 IOPS를 지원
+- Magnetic/HDD 군
+  - Throughput Optimized HDD(ST1) : 빅데이터 Datawarehouse, Log 프로세싱시 주로 사용
+    (boot volume으로 사용 불가 : 윈도우처럼 운영체제를 가지고 있을 수 없다는 뜻)
+  - CDD HDD (SC1) : 파일 서버와 같이 드문 volume 접근시 주로 사용
+    (boot volume으로 사용 불가 but, 비용 매우 저렴)
+  - Magnetic (Standard) : 디스크 1GB당 가장 싼 비용을 자랑.
+    (boot volume으로 유일하게 가능)
