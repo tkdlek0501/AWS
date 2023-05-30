@@ -1,0 +1,6 @@
+AWS에서 제공하는 DNS 서비스
+- EC2 instance
+- S3 Bucket
+- Load Balancer
+
+도메인 주소를 구매해서 위 3가지로 연결 시켜주는 것
