@@ -1,0 +1,14 @@
+- Automated Backups (자동 백업)
+    1. Retention Period(1~35일) 안의 어떤 시간으로 돌아가게 할 수 있음
+    2. AB는 그날 생성된 스냅샷과 Transaction logs을 참고
+    3. default로 AB기능이 설정되어 있으며 백업 정보는 S3에 저장
+        S3는 RDS 인스턴스의 크기 만큼만 무료로 사용이 가능
+    4. AB동안 약간의 I/O suspension이 존재할 수 있음 → Latency
+        체감상 크진 않지만 어느 정도의 딜레이가 발생
+        
+- DB snapshots (데이터베이스 스냅샷)
+    1. 주로 사용자에 의해 실행됨
+    2. 원본 RDS Instance를 삭제해도 스냅샷은 S3에 존재함(vs AB)
+
+데이터베이스 백업 시 일어나는 동작
+원본 RDS 인스턴스를 가지고 복원 시, 새로운 RDS 인스턴스와 Endpoint가 생겨 기존과는 아예 다른 객체이다.
