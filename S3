@@ -1,0 +1,55 @@
+S3 (Simple Storage Service)
+- 안전하고 가변적인 Object 저장 공간을 제공 (ex. google cloud)
+- 편리한 UI 인터페이스를 통해 어디서나 쉽게 데이터를 저장하고 불러올 수 있음
+- 파일 크기는 0KB부터 5TB까지 지원
+- 저장공간 무제한
+- Bucket이라는 이름 사용 (디렉토리와 비슷한 개념)
+- Bucket은 보편적인 namespace를 사용 (이름이 고유해야 한다)
+
+S3 Object 구성요소
+- key : 파일명
+- value : 파일에 대한 데이터
+- Version ID
+- Metadata
+- CORS (Cross Origin Resource Sharing)
+  한 Bucket을 다른 Bucket에서 접근 가능하게 하는 것
+  
+S3 Data Consistency Model (S3에서 제공하는 모델)
+1. Read after Write Consistency(PUT)
+    S3에 파일 올릴 때 put 을 사용하는데, 파일이 S3 버킷에 올라가면 그 파일을 바로 사용할 수 있게 된다
+2. Eventual Consistency (UPDATE, DELETE)
+    버킷에 올라간 파일을 수정하거나 삭제한 후 바로 사용할 수 없다
+    
+다양한 S3 스토리지 타입
+- 일반 S3
+    - 가장 보편적으로 사용되는 타입
+    - 높은 내구성, 가용성
+        얼마나 데이터 손실 없이 보관되는지, 얼마나 데이터 접근이 용이한지    
+- S3 - IA(Infrequent Access)
+    - 자주 접근되지는 않으나 접근시 빠른 접근이 요구되는 파일이 많을 시 유용
+    - 일반 S3에 비해 비용은 저렴하나 접근시 추가 비용 발생
+    - 멀티 AZ를 통한 데이터 저장
+- S3 - One Zone IA
+    - 단일 AZ를 통한 데이터 저장
+    - 단일 AZ에 의한 데이터 접근 제한 (조금 낮은 가용성)
+    - 데이터 접근시 S3-IA 보다 20% 비용 저렴
+- Glacier
+    - 거의 접근하지 않을 데이터 저장 시 유용
+    - 매우 저렴한 비용
+    - 데이터 접근시 대략 4-5시간 소요
+- Intelligent Tiering
+    - 데이터 접근 주기가 불규칙할 때 매우 유용
+    - 2가지 티어 존재
+        - Frequent Tier
+        - Infrequent Tier
+    - 데이터 접근주기에 따라 두가지 티어중 하나로 선택됨
+    - Frequent Tier가 비용이 약간 더 비쌈
+    - 최고의 비용 절감 효율을 누릴 수 있음
+    
+만약 시험을 준비한다면 어느 시나리오에서 어떤 타입이 유리한지 아는 게 좋다
+
+요금
+- GB당
+- PUT, GET, COPY 요청 횟수당
+- 데이터 다운로드, 다른 리소스로 전송 시
+- Metadata (object tag)
