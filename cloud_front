@@ -1,0 +1,14 @@
+- 정적, 동적, 실시간 웹사이트 컨텐츠를 유저들에게 전달
+- Edge Location을 사용
+  - 컨텐츠들이 캐시에 보관되어지는 장소
+  - 다른 지역의 사용자들은 직접 origin에 붙지 않고 Edge Location에서 delivery
+  - 처음 origin(원래 컨텐츠들이 들어있는 곳, 웹서버 호스팅이 되고 있는 곳 ex. S3, EC2)
+    접근 이후 Edge Location 캐시에 보관
+    - 특정 시간 지나면 삭제
+- 컨텐트 딜리버리 네트워크 Content Delivery Network(CDN)
+  - 웹페이지가 현재 어디서 불려지는 지, 사용자가 어느 지역에 거주하는지에 근거하여 컨텐츠 웹페이지에
+    delivery 해주는 분산 네트워크
+- 분산 네트워크 (Distributed Network)
+  - 분산 : CDN 에서 사용되어지며 Edge Location 들을 묶고 있다는 개념
+  
+  
