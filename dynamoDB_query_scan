@@ -1,0 +1,16 @@
+Query 
+- Primary Key를 사용하여 데이터 검색
+- Query 사용시 모든 데이터(컬럼) 반환
+- ProjectionExpression 파라미터 (필터링해서 필요한 컬럼만 조회 가능)
+가격     거래아이디     거래시간
+2500     AAA            2023-05-16 17:30:00
+3000     BBB            2023-05-16 14:00:00
+1000     AAA            2023-06-11 11:00:00
+2000     AAA            2023-06-13 15:25:00
+
+Scan
+- 모든 데이터를 불러옴 (PK 사용 x)
+- ProjectionExpression 파라미터
+
+Query vs Scan
+- Query가 Scan 보다 훨씬 효율적이니 Query 사용을 추천한다.
