@@ -1,0 +1,11 @@
+- DynamoDB 테이블에서 일어나는 일들(삽입, 수정, 삭제 등)이 일어날 시 시간적 순서에 맞게 
+  Streams에 기록
+- Log는 즉각 암호화가 일어나며 24시간 동안 보관됨
+- 주로 이벤트를 기록하고 이벤트 발생을 외부로 알리는 용도
+  (ex. Lambda Function)
+- 이벤트 전&후에 대한 상황 보관
+
+하나의 API 하나의 DynamoDB 엔드포인트와 연결
+
+간단한 아키텍처(예시)
+DynamoDB streams - Lambda Function - SNS(Simple Notification Service) - SQS(Simple Queue Service) <-> 어플리케이션
