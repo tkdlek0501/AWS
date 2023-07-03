@@ -1,0 +1,16 @@
+Code Commit & Deploy & Pipeline
+- CI : Continuous Integration (지속적인 통합)
+- CD : Contiuous Deployment (지속적인 배포)
+
+CI/CD 의 장점
+- 자동화 시스템(Automation) - 테스트
+- Incremental Change
+
+중앙 Repository
+- 코드를 관리/ 보관하는 공간 (ex. github)
+- AWS의 힘을 빌려 CI/CD 가능
+  - github 에서 커밋된 코드를 가져와서 가능
+- Github
+  - Local & Master branch
+    - Local : 개발자가 로컬 환경에서 작업하는 브랜치
+    - Master : 실제 Product에서 이용되는 브랜치
