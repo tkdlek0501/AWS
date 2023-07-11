@@ -1,0 +1,13 @@
+CI/CD의 끝판왕
+CI/CD 관련 섹션에서의 기능들을 자동으로 해줌
+
+- 빌드, 테스트, 배포 과정을 관리
+  - 코드 변경시 code pipeline은 이를 감지할 수 있음
+- 소프트웨어 및 어플리케이션 출시 자동화 기능
+  - 빠르고 쉬운 디버깅을 가능케 해줌
+
+code pipeline 작동 방법
+1. Workflow 정의 (Code Pipeline)
+2. 코드 저장소에서 코드 변경 (Code Commit)
+3. 컴파일, 테스트, 패키지 생성 (Code Build)
+4. staging 혹은 product 배포 (Code Deploy)
