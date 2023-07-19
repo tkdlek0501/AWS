@@ -1,0 +1,28 @@
+S3 암호화 실습
+1. S3에 들어가 버킷 생성
+2. 이름과 리전 설정
+3. 기본 암호화는 비활성화 - 버킷 정책을 통해 버킷 암호화를 별도로 활성화 할 것이기 때문에 이 단계에서는
+  비활성화
+4. 버킷 생성
+5. 버킷 정책에서 편집
+6. 정책 생성기를 통해 정책 만들기
+7. Select Type of Policy에 S3 선택
+8. Effect는 deny : 사용자가 S3 버킷에 object 업로드시 암호화가 안 걸려 있다면 업로드 거부
+9. Principal 은 * 넣어주기 : 모든 요청에 적용
+10. Actions에 putObject
+11. Amazon Resource Name(ARN)에는 버킷의 고유 주소(버킷 ARN)을 넣어준다.
+12. 밑에 Add Condition 으로 condition 추가
+13. Condition에 StringNotEquals 선택
+14. Key는 amz-server-side-encryption
+15. value는 aws:kms를 입력
+결론 : 사용자가 S3에 업로드할 때 object에 서버 측 암호화가 안 걸려있다면 모든 putObject 액션에 대해서
+  deny 한다는 정책이 설정된다.
+16. 위 까지 선택/ 입력 했으면 add condition 눌러 condition 넣어주고 add statement 눌러준뒤
+  generate policy 버튼을 눌러주면 결과로 나온 json을 복사해서 버킷 정책 편집으로 돌아가서 붙여준다.
+17. 그리고 변경 사항 저장 버튼을 눌러 저장
+18. 이때 Action does not apply to any resource(s) in statement 에러가 날텐데
+  우리가 resource를 하나만 사용하는 게 아니라 ams:kms도 사용하기 때문에 에러 발생.
+  json 구문에서 Resource 값 뒤에 /* 를 붙여서 모두 적용을 해줘야 한다.
+19. 실제로 위 정책이 반영됐는지 확인하기 위해 테스트
+  1) 파일 추가 후 암호화 키 미지정하고 업로드 - 업로드 실패 (액세스가 거부됨)
+  2) 암호화 키 지정하고 업로드 - 업로드 성공
